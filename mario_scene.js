@@ -45,7 +45,7 @@ export class Scene{
             this.xBackground2 = 750;
         }
 
-// ---
+// Decor
 
         ctx.drawImage(this.imgStartCastle, 10 - this.xPos, 95)
         ctx.drawImage(this.imgStart, 220 - this.xPos, 234);

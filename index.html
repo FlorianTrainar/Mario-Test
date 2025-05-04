@@ -1,14 +1,58 @@
+
 <!DOCTYPE html>
 <html>
   <link rel="shortcut icon" href="#" />
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+ 
+
+  
   <head>
     <title>Test-Mario</title>
     <meta charset="UTF-8">
+    <script src="https://kit.fontawesome.com/5c99d8e532.js" crossorigin="anonymous"></script>
+    <script src="./mario_keyboard.js">
+    </script>
+
   </head>
   <body>
-    <canvas id = "drawn_zone"></canvas>
-    <script type= "module" src="mario.js"></script>
 
-    <!-- Le contenu de votre page Web sera à insérer ici -->
+    <main>
+      <div class="controller">
+        <section class="leftPad">
+          <div>
+            <button>
+              <i class="fa-regular fa-circle-up"></i>
+            </button>
+            <button onclick="buttonDirection('right')">
+              <i class="fa-regular fa-circle-right"></i>
+            </button>
+          </div>
+          <div>
+            <button>
+              <i class="fa-regular fa-circle-left"></i>
+            </button>
+            <button>
+              <i class="fa-regular fa-circle-down"></i>
+            </button>
+          </div>
+        </section>
+      </div>
+
+    <div class="screen">
+      <canvas id = "drawn_zone"></canvas>
+      <script type= "module" src="mario.js"></script>
+    </div>
+
+    <div class="controller">
+      <section class="rightPad">
+        <button>B</button>
+        <button>A</button>
+
+      </section>
+    </div>
+  </main>
+
   </body>
 </html>  
+

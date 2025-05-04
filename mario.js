@@ -1,7 +1,7 @@
 // ---Contexe graphique
 
 const cvs = document.getElementById("drawn_zone")
-cvs.width = 700;
+cvs.width = 500;
 cvs.height= 350;
 const ctx = cvs.getContext("2d");
 
@@ -9,6 +9,8 @@ import {Scene} from "./mario_scene.js";
 import {Keyboard} from "./mario_keyboard.js"
 import { Koopa, Mario, Gumba } from "./mario_character.js";
 import { Bloc, Pipe, Coin} from "./mario_objects.js"
+
+
 
 const soundCoin = new Audio()
 soundCoin.src = "./src/audio/piece.wav"
@@ -49,7 +51,7 @@ const koopaArray = [koopa1, koopa2]
 
 export const scene =new Scene(cvs.width, cvs.height);
 const keyboard = new Keyboard();
-export const mario = new Mario(300,245);
+export const mario = new Mario(160,245);
 
 let coinsCounter = 0;
 let timeRemaining = 100;
