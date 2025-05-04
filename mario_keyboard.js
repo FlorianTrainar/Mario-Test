@@ -37,18 +37,4 @@ export class Keyboard{
     }
 }
 
-// 
-export const buttonDirection = (dir) => {
-    if (dir === "right"){
-        mario.walking =true;
-        mario.toTheRight =true;
-        scene.dx= -1
-    } else if (dir === "left"){
-        mario.walking =true;
-        mario.toTheRight =false;
-        scene.dx= 1
-    }
-    
-}
-// 
 

@@ -10,21 +10,22 @@
   <head>
     <title>Test-Mario</title>
     <meta charset="UTF-8">
+    <script type= "module" src="mario.js"></script>
+    <!-- <script type="module" src="mario_controller.js"></script> -->
     <script src="https://kit.fontawesome.com/5c99d8e532.js" crossorigin="anonymous"></script>
-    <script src="./mario_keyboard.js">
-    </script>
-
   </head>
   <body>
 
     <main>
+      
       <div class="controller">
         <section class="leftPad">
           <div>
             <button>
               <i class="fa-regular fa-circle-up"></i>
             </button>
-            <button onclick="buttonDirection('right')">
+            
+            <button id="right-button">
               <i class="fa-regular fa-circle-right"></i>
             </button>
           </div>
@@ -41,7 +42,6 @@
 
     <div class="screen">
       <canvas id = "drawn_zone"></canvas>
-      <script type= "module" src="mario.js"></script>
     </div>
 
     <div class="controller">

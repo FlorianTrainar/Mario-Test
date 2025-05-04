@@ -9,7 +9,7 @@ import {Scene} from "./mario_scene.js";
 import {Keyboard} from "./mario_keyboard.js"
 import { Koopa, Mario, Gumba } from "./mario_character.js";
 import { Bloc, Pipe, Coin} from "./mario_objects.js"
-
+import { rightButton, releaseButton } from "./mario_controller.js";
 
 
 const soundCoin = new Audio()
@@ -51,6 +51,7 @@ const koopaArray = [koopa1, koopa2]
 
 export const scene =new Scene(cvs.width, cvs.height);
 const keyboard = new Keyboard();
+
 export const mario = new Mario(160,245);
 
 let coinsCounter = 0;
