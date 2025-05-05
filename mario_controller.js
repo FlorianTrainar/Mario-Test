@@ -41,4 +41,4 @@ leftPad.addEventListener('touchstart', leftButton)
 leftPad.addEventListener('touchend', releaseButton)
 
 let aPad = document.getElementById('jump-button')
-aPad.addEventListener('click', jumpButton)
+aPad.addEventListener('touchstart', jumpButton)
