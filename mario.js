@@ -9,7 +9,7 @@ import {Scene} from "./mario_scene.js";
 import {Keyboard} from "./mario_keyboard.js"
 import { Koopa, Mario, Gumba } from "./mario_character.js";
 import { Bloc, Pipe, Coin} from "./mario_objects.js"
-import { rightButton, releaseButton } from "./mario_controller.js";
+import { rightButton, leftButton, jumpButton, releaseButton } from "./mario_controller.js";
 
 
 const soundCoin = new Audio()
