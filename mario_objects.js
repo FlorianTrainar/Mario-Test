@@ -28,6 +28,12 @@ export class Pipe extends Object{
         this.imgObject.src = "./src/images/tuyauRouge.png"
     }
 }
+export class PipeGreen extends Object{
+    constructor(x,y){
+        super(x,y, 43,65);
+        this.imgObject.src = "./src/images/tuyauVert.png"
+    }
+}
 
 export class Coin extends Object{
     constructor(x,y){

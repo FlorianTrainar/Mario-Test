@@ -7,8 +7,8 @@ const ctx = cvs.getContext("2d");
 
 import {Scene} from "./mario_scene.js";
 import {Keyboard} from "./mario_keyboard.js"
-import { Koopa, Mario, Gumba } from "./mario_character.js";
-import { Bloc, Pipe, Coin} from "./mario_objects.js"
+import { Koopa, RedKoopa, Mario, Gumba } from "./mario_character.js";
+import { Bloc, Pipe, PipeGreen, Coin} from "./mario_objects.js"
 import { rightButton, leftButton, jumpButton, releaseButton } from "./mario_controller.js";
 
 
@@ -21,31 +21,56 @@ soundEnnemyDies.src = "./src/audio/ecrasePersonnage.wav"
 
 // Objets fixes
 
-const pipe1 = new Pipe(400, 230)
-const pipe2 = new Pipe(900, 230)
-const pipe3 = new Pipe(1000, 230)
-const pipe4 = new Pipe(1400, 230)
-const bloc1 = new Bloc(520, 170)
-const bloc2 = new Bloc(620, 170)
 
-const objectArray = [pipe1, pipe2, pipe3, pipe4, bloc1, bloc2]
+const pipeGreen1 = new PipeGreen(400, 230)
+const pipeGreen2 = new PipeGreen(700, 230)
+const pipe1 = new Pipe(1000, 230)
+const pipe2 = new Pipe(1400, 230)
+const pipe3 = new Pipe(1850, 230)
 
-const coin1 = new Coin(525, 90)
-const coin2 = new Coin(625, 90)
+const bloc1 = new Bloc(500, 170)
+const bloc2 = new Bloc(600, 170)
+const bloc3 = new Bloc(1500, 170)
+const bloc4 = new Bloc(1600, 170)
+const bloc5 = new Bloc(1700, 170)
 
-const coinArray = [coin1, coin2]
+
+const objectArray = [pipeGreen1, pipeGreen2, pipe1, pipe2, pipe3, bloc1, bloc2, bloc3, bloc4, bloc5]
+
+const coin1 = new Coin(505, 90)
+const coin2 = new Coin(605, 90)
+const coin3 = new Coin(805, 200)
+const coin4 = new Coin(905,200)
+const coin5 = new Coin(1205, 200)
+const coin6 = new Coin(1205, 150)
+const coin7 = new Coin(1205,100)
+const coin8 = new Coin(1505, 90)
+const coin9 = new Coin(1605, 90)
+const coin10 = new Coin(1705,90)
+
+const coinArray = [coin1, coin2, coin3, coin4, coin5, coin6, coin7, coin8, coin9, coin10]
 
 // Ennemis
 
-const gumba1 = new Gumba(550, 263)
-const gumba2 = new Gumba(600,263)
+// const gumba1 = new Gumba(550, 263)
+const gumba2 = new Gumba(800,263)
+const gumba3 = new Gumba(1250,263)
+const gumba4 = new Gumba(1300,263)
+const gumba5 = new Gumba(1350,263)
+const gumbaArray  = [gumba2, gumba3, gumba4, gumba5]
 
-const gumbaArray  = [gumba1, gumba2]
-
-const koopa1 = new Koopa(1200, 243)
-const koopa2 = new Koopa(1250,243)
-
+const koopa1 = new Koopa(550, 243)
+const koopa2 = new Koopa(900,243)
 const koopaArray = [koopa1, koopa2]
+
+const redKoopa1 = new RedKoopa(1600,243)
+const redKoopa2 = new RedKoopa(1650,243)
+const redKoopa3 = new RedKoopa(1700,243)
+const redKoopaArray = [redKoopa1, redKoopa2, redKoopa3]
+
+
+
+
 
 // 
 
@@ -83,6 +108,16 @@ function draw(){
             
         }
     }
+    for (let i=0; i< redKoopaArray.length; i++){
+        if(mario.near(redKoopaArray[i]) === true && redKoopaArray[i].alive === true ){
+            mario.contactCharacter(redKoopaArray[i])
+            if(redKoopaArray[i].alive === false){
+                soundEnnemyDies.play()
+            }
+            
+        }
+    }
+
 
     // - Objets
     for(let i = 0; i<objectArray.length; i++) {
@@ -133,7 +168,7 @@ function draw(){
     }
     for(let i = 0; i<gumbaArray.length; i++){
         for(let j=0; j<koopaArray.length; j++){
-            if(gumbaArray[i].alive === true && koopaArray[i].alive === true ){
+            if(gumbaArray[i].alive === true){
 
                 if(gumbaArray[i].near(koopaArray[j]) === true){
                     gumbaArray[i].contact(koopaArray[j])
@@ -163,6 +198,13 @@ function draw(){
             }
         }
     }
+    for(let i = 0; i<redKoopaArray.length; i++){
+        for(let j=0; j<objectArray.length; j++){
+            if(redKoopaArray[i].near(objectArray[j]) === true){
+                redKoopaArray[i].contact(objectArray[j])
+            }
+        }
+    }
 
     // Deplacement des objets fixes
 
@@ -185,6 +227,12 @@ function draw(){
         koopaArray[i].motion();
         koopaArray[i].move();
     }
+
+    for(let i = 0; i<redKoopaArray.length; i++){
+        redKoopaArray[i].motion();
+        redKoopaArray[i].move();
+    }
+
    
     // Image des objets
     for(let i = 0; i<objectArray.length; i++){
@@ -212,6 +260,15 @@ function draw(){
         }
     }
 
+    for(let i = 0; i<redKoopaArray.length; i++){
+        if(redKoopaArray[i].alive === true) {
+            ctx.drawImage(redKoopaArray[i].walk("tortueRouge", 40), redKoopaArray[i].x, redKoopaArray[i].y)
+        } else {
+            ctx.drawImage(redKoopaArray[i].die(), redKoopaArray[i].x, redKoopaArray[i].y + 30)
+        }
+    }
+
+
     // Image de Mario
     if(mario.alive === true){
         if(mario.jumping === true){
@@ -228,13 +285,13 @@ function draw(){
   
 
     // Game Over
-   if(timeRemaining > 0 && mario.alive === true && coinsCounter === 2 && scene.xPos > 2000){
+   if(timeRemaining > 0 && mario.alive === true && coinsCounter === 10 && scene.xPos > 2000){
     gameOver = true;
     ctx.font = "60px Arial"
     ctx.fillText("Gagné !!", 120, 180)
     if(soundPlay === true){
         soundGameBeated.play()
-        soundPlay === false
+        soundPlay = false
     }
    } else if (timeRemaining <=0 || mario.alive === false){
     gameOver === true

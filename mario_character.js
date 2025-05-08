@@ -287,4 +287,41 @@ export class Koopa extends Character{
         return this.img
     }
 }
+export class RedKoopa extends Character{
+    constructor(x, y){
+        super(x,y, 43, 50);
+        this.img.src = "./src/images/tortueRougeArretDroite.png"
+        this.dxKoopa = 1,5;
+        this.walking = true;
+        this.toTheRight = false;
+    }
+    move(){
+        if (this.alive === true){
+            if(this.toTheRight === true){
+                this.dxKoopa = 1,5
+            } else {
+                this.dxKoopa = -1,5
+            }
+            this.x = this.x + this.dxKoopa
+        }
+    }
+
+    contact(entity){
+        if(this.contactRight(entity)===true && this.toTheRight === true){
+            this.toTheRight = false 
+            this.dxKoopa =-1
+        } else if (this.contactLeft(entity) === true && this.toTheRight ===false){
+            this.toTheRight = true
+            this.dxKoopa = 1
+        }
+    }
+
+    die(){
+       
+        this.img.src = "./src/images/tortueRougeFermee.png"
+        return this.img
+    }
+}
+
+
 
